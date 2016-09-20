@@ -1,0 +1,17 @@
+#same plot but with stride 10ns
+time_in_ns = [int(t)*0.001 for t in totalrestime]
+
+helixcounts=[helixrestime[i]/16 for i in range(len(time_in_ns[::100]))]
+coilcounts=[coilrestime[i]/16 for i in range(len(time_in_ns[::100]))]
+betacounts=[betarestime[i]/16 for i in range(len(time_in_ns[::100]))]
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.1, 0.55, 0.70])
+ax.plot(time_in_ns[::100], helixcounts, label = 'Helix')
+ax.plot(time_in_ns[::100], coilcounts, label='Random Coil')
+ax.plot(time_in_ns[::100], betacounts, label='Beta Sheet')
+ax.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+ax.set_xlabel('Trajectory Length', size=11)
+ax.set_ylabel('Fraction of Residues', size=11)
+ax.set_title('Project 6391/ GA77 Helix->Hairpin', size =11)
+plt.show
